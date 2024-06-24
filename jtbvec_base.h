@@ -4,6 +4,8 @@
 #include <sstream>
 #include "jtbextras.h"
 #include <iostream>
+#include <functional>
+
 
 
 
@@ -14,14 +16,70 @@ class Str;
 template<typename T>
 class Vec {
     std::vector<T> content;
+
+    enum class SortStage { INIT, PROC };
+
+    void sortInner(std::function<float(const T&, const T&)> callback, std::size_t start = 0, std::size_t end = 0, SortStage stage = SortStage::INIT) {
+	if (stage == SortStage::INIT) { end = content.size(); }
+	/* using original start/end important for the recursion <- 06/14/24 20:03:42 */ 
+	std::size_t origstart { start };
+	std::size_t origend { end };
+	if (start >= end) return;
+	/* pivot is a T <- 06/14/24 15:03:37 */ 
+	T pivot { content.at(end-1) };
+	/* swap is an index <- 06/14/24 15:03:43 */ 
+	std::size_t swap { start + 1 };
+	while (swap <= end-1) {
+	    /* if callback is neg, switch start and swap items and advance swap position, start does not advance <- 06/14/24 15:08:38 */ 
+	    if (callback(content.at(start), pivot) < 0) { 
+		T dummy = content.at(swap);
+		content.at(swap) = content.at(start);
+		swap++;
+		content.at(start) = dummy;
+	    }
+	    else {
+		/* callback is nonneg, we advance start <- 06/14/24 15:25:14 */ 
+		start++;
+		/* if start >= swap, start is on new item (or pivot), advance swap to one past start <- 06/14/24 15:25:38 */ 
+		if (start >= swap) swap = start + 1;
+		/* if start < swap, start is on an already swapped item, switch it with new item (or pivot) at swap and advance swap <- 06/14/24 15:26:41 */ 
+		else {
+		    T dummy = content.at(swap);
+		    content.at(swap) = content.at(start);
+		    swap++;
+		    content.at(start) = dummy;
+		}
+	    }
+	}
+
+	/* sort the items between 0 and start-1 <- 06/14/24 15:36:58 */ 
+	sortInner(callback, origstart, start, SortStage::PROC);
+	/* sort the items between start+1 and end-1 <- 06/14/24 15:37:28 */ 
+	sortInner(callback, start+1, origend, SortStage::PROC);
+    }
+
 public:
+
     Vec(T& x) { std::vector<T> s(x); content = s; }
+    Vec(const T& x) { std::vector<T> s(x); content = s; }
+    Vec(std::vector<T>& x): content(x) {};
+    Vec(std::vector<T>&& x): content(x) {};
+    Vec(const std::vector<T>& x): content(x) {};
+    Vec(const std::vector<T>&& x): content(x) {};
     Vec(std::initializer_list<T> list): content(list) {}
     Vec(T&& x) { std::vector<T> s; s.push_back(std::move(x)); content = s; }
     Vec() = default;
 
     /* Returns the size of the Vec<T>. <= 01/18/24 18:20:35 */ 
     auto size() const { return content.size(); }
+
+    /* cheap iterators <= 02/09/24 19:04:15 */ 
+    using const_iterator = std::vector<T>::const_iterator;
+    const_iterator begin() const { return content.begin(); }
+    const_iterator end() const { return content.end(); }
+    using iterator = std::vector<T>::iterator;
+    iterator begin() { return content.begin(); }
+    iterator end() { return content.end(); }
 
     constexpr T& operator[](std::size_t i) { if (i >= content.size()) throw std::out_of_range("Indexing out of range."); return content[i]; }
 
@@ -41,13 +99,21 @@ public:
 
     constexpr bool operator==(const Vec<T>&) const;
 
+    constexpr Vec<T>& operator=(const Vec<T>&);
+
     template <typename U>
     friend constexpr std::ostream& operator<<(std::ostream&, const Vec<U>&); 
+
+    template <typename U>
+    friend constexpr std::istream& operator>>(std::istream&, Vec<U>&); 
+
+    template <typename U>
+    friend constexpr std::iostream& operator>>(std::iostream&, Vec<U>&); 
 
     /* Returns a Vec<X> by calling X (*callback)(T) on 
      * the elements of the Vec<T>. <= 01/18/24 18:26:18 */ 
     template <typename X>
-    Vec<X> map(X (*callback)(T)) const { 
+    constexpr Vec<X> map(std::function<X(T)> callback) const { 
 	Vec<X> ret;
 	for (auto& elem : content) {
 	    ret.push(callback(elem));
@@ -58,7 +124,7 @@ public:
     /* Returns a Vec<T> for which 
      * the passed callback
      * returns true. <= 01/18/24 21:21:39 */ 
-    constexpr Vec<T> filter(bool (*callback)(T)) const;
+    constexpr Vec<T> filter(std::function<bool(T)>) const;
 
 
     /* Returns an accumulated X from the Vec<T>
@@ -69,7 +135,7 @@ public:
      * passed as the second. start 
      * is the initial value. <= 01/18/24 21:28:07 */ 
     template <typename X>
-    X reduce(X (*callback)(T prev, T next), T start) const {
+    constexpr X reduce(std::function<X(T,T)> callback, T start) const {
 	for (T elem : content){
 	    start = callback(start, elem);
 	}
@@ -82,7 +148,7 @@ public:
      * value, startIndex is the index
      * to begin the accumulation. <= 01/18/24 22:36:29 */ 
     template <typename X>
-    X reduce(X (*callback)(T prev, T next, std::size_t i, Vec<T> vec), X start, std::size_t startIndex) const {
+    constexpr X reduce(std::function<X(T,T,std::size_t,Vec<T>)> callback, X start, std::size_t startIndex) const {
 	for (auto i = startIndex; i < content.size(); i++) {
 	    start = callback(start, content[i], i, *this);
 	}
@@ -91,7 +157,7 @@ public:
 
     /* Fill the Vec<T> with val
      * starting at index. <= 01/19/24 09:58:20 */ 
-    Vec<T>& fill(T val, std::size_t index = 0) {
+    constexpr Vec<T>& fill(T val, std::size_t index = 0) {
 	auto size = content.size();
 	if (index >= size) throw std::out_of_range("Fill is indexing out of range.");
 	for (auto i = index; i < size; i++) {
@@ -107,7 +173,7 @@ public:
      * expand it as needed to complete 
      * the fill.
      * * <= 01/19/24 10:53:59 */ 
-    Vec<T>& fill(T val, std::size_t size, std::size_t index) {
+    constexpr Vec<T>& fill(T val, std::size_t size, std::size_t index) {
 
 	if (content.size() < size) {
 	    fill(val);
@@ -124,7 +190,7 @@ public:
     }
 
     template <typename X>
-    Vec<JTB::ConstPair<T, X>> zip(Vec<X>& stuffToZip) const {
+    constexpr Vec<JTB::ConstPair<T, X>> zip(Vec<X>& stuffToZip) const {
 	Vec<ConstPair<T, X>> ret;
 	for (auto i = 0; i < stuffToZip.size() && i < content.size(); i++) {
 	    ret.push({content[i], stuffToZip[i]});
@@ -134,42 +200,42 @@ public:
 
     Str join(std::string = " ") const;
 
-    bool every(bool (*callback)(T)) const {
+    constexpr bool every(std::function<bool(T)> callback) const {
 	for (auto& elem : content) {
 	    if (!callback(elem)) return false;
 	}
 	return true;
     }
     
-    bool includes(const T& x) const {
+    constexpr bool includes(const T& x) const {
 	for (auto& elem : content) {
 	    if (elem == x) return true;
 	}
 	return false;
     }
 
-    bool any(bool (*callback)(T a)) const {
+    constexpr bool any(std::function<bool(T)> callback) const {
 	for (auto& elem : content) {
 	    if (callback(elem)) return true;
 	}
 	return false;
     }
 
-    Vec<T>& operator+=(const Vec<T>& rhs) {
+    constexpr Vec<T>& operator+=(const Vec<T>& rhs) {
 	for (auto& elem : rhs) {
 	    content.push_back(elem);
 	}
 	return *this;
     }
 
-    Vec<T>& operator+=(const Vec<T>&& rhs) {
+    constexpr Vec<T>& operator+=(const Vec<T>&& rhs) {
 	for (auto& elem : rhs) {
 	    content.push_back(elem);
 	}
 	return *this;
     }
 
-    Vec<T> operator+(const Vec<T>& rhs) const {
+    constexpr Vec<T> operator+(const Vec<T>& rhs) const {
 	Vec<T> ret = *this;
 	for (auto& elem : rhs) {
 	    ret.push(elem);
@@ -177,14 +243,14 @@ public:
 	return ret;
     }
 
-    Vec<T>& operator+=(std::initializer_list<T> rhs) {
+    constexpr Vec<T>& operator+=(std::initializer_list<T> rhs) {
 	for (auto& elem : rhs) {
 	    content.push_back(elem);
 	}
 	return *this;
     }
 
-    Vec<T>& operator-=(const Vec<T>& rhs) {
+    constexpr Vec<T>& operator-=(const Vec<T>& rhs) {
 	std::vector<T> ret; 
 	for (auto& elem : content) {
 	    if (!rhs.includes(elem)) {
@@ -195,7 +261,7 @@ public:
 	return *this;
     }
 
-    Vec<T>& operator-=(const Vec<T>&& rhs) {
+    constexpr Vec<T>& operator-=(const Vec<T>&& rhs) {
 	std::vector<T> ret; 
 	for (auto& elem : content) {
 	    if (!rhs.includes(elem)) {
@@ -206,7 +272,7 @@ public:
 	return *this;
     }
 
-    Vec<T>& operator-=(std::initializer_list<T> rhs) {
+    constexpr Vec<T>& operator-=(std::initializer_list<T> rhs) {
 	std::vector<T> ret; 
 	Vec<T> temp {rhs};
 	for (auto& elem : content) {
@@ -218,7 +284,7 @@ public:
 	return *this;
     }
 
-    Vec<T> operator-(const Vec<T>& rhs) const {
+    constexpr Vec<T> operator-(const Vec<T>& rhs) const {
 	Vec<T> ret;
 	for (auto& elem : content) {
 	    if (!rhs.includes(elem)) {
@@ -228,7 +294,7 @@ public:
 	return ret;
     }
 
-    Vec<T> operator-(const Vec<T> rhs) const {
+    constexpr Vec<T> operator-(const Vec<T> rhs) const {
 	Vec<T> ret;
 	for (auto& elem : content) {
 	    if (!rhs.includes(elem)) {
@@ -238,43 +304,20 @@ public:
 	return ret;
     }
 
-    void forEach(void (*callback)(T)) const {
+    
+    void forEach(std::function<void(T)> callback) const {
 	for (auto& elem : content) {
 	    callback(elem);
 	}
     }
 
-    enum class SortStage { INIT, PROC };
 
-    /**
-     * this is a test
-     */
-    void sort(int (*callback)(const T&, const T&), std::size_t start = 0, std::size_t end = 0, SortStage stage = SortStage::INIT) {
-	if (stage == SortStage::INIT) { end = content.size(); }
-	if (start >= end) return;
-	T pivot = content.at(end-1);
-	std::size_t swap = start + 1;
-	while (swap <= end-1) {
-	    if (callback(content.at(start), pivot) < 0) { 
-		T dummy = content.at(swap);
-		content.at(swap) = content.at(start);
-		swap++;
-		content.at(start) = dummy;
-	    }
-	    else {
-		start++;
-		if (start >= swap) swap = start + 1;
-		else {
-		    T dummy = content.at(swap);
-		    content.at(swap) = content.at(start);
-		    swap++;
-		    content.at(start) = dummy;
-		}
-	    }
-	}
-	sort(callback, 0, start, SortStage::PROC);
-	sort(callback, start+1, end, SortStage::PROC);
+    /* Quicksort in place. If callback(a,b) is negative, b 
+     * will come before a in the sort. <- 06/14/24 15:40:12 */ 
+    void sort(std::function<float(const T&, const T&)> callback) {
+	sortInner(callback);
     }
+
 
 
     /**
@@ -314,7 +357,7 @@ public:
 	std::size_t index;
     };
 
-    FindObject find(bool (*callback)(T)) const {
+    FindObject find(std::function<bool(T)> callback) const {
 	FindObject ret;
 	for (auto i = 0; i < content.size(); i++) {
 	    if (callback(content.at(i))) {
@@ -356,6 +399,16 @@ constexpr bool Vec<T>::operator==(const Vec<T>& rhs) const {
     return true;
 }
 
+template <typename T>
+constexpr Vec<T>& Vec<T>::operator=(const Vec<T>& rhs) {
+    content.clear();
+    auto size = rhs.size();
+    for (auto i = 0; i < size; i++) {
+	content.push_back(rhs.at(i));
+    }
+    return *this;
+}
+
 /**
 * @brief Filters a Vec<T>
 *
@@ -364,7 +417,7 @@ constexpr bool Vec<T>::operator==(const Vec<T>& rhs) const {
 * Vec<T> for which the callback returns true.
 */
 template <typename T>
-constexpr Vec<T> Vec<T>::filter(bool (*callback)(T)) const {
+constexpr Vec<T> Vec<T>::filter(std::function<bool(T)> callback) const {
     Vec<T> ret;
     for (auto& elem : content) {
 	if (callback(elem)) ret.push(elem);

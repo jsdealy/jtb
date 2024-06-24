@@ -27,6 +27,24 @@ JTB::Str Vec<T>::join(std::string token) const {
 }
 
 template <typename T>
+constexpr std::istream& operator>>(std::istream& is, Vec<T>& vec) {
+    T dummy;
+    while (is.good()) {
+	is >> dummy; 
+	vec.push(dummy);
+    }
+    return is;
+}
+
+template <typename T>
+constexpr std::iostream& operator>>(std::iostream& is, Vec<T>& vec) {
+    T dummy;
+    is >> dummy; 
+    vec.push(dummy);
+    return is;
+}
+
+template <typename T>
 constexpr std::ostream& operator<<(std::ostream& os, const Vec<T>& vec) {
     os << "[ "; 
     auto size = vec.size();
