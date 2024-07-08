@@ -375,10 +375,10 @@ constexpr std::size_t Str::findPairCloser(const Str open, const Str close, std::
 }
 
 
-Str Str::slice(long start, long end) const {
+inline Str Str::slice(long start, long end) const {
     if (start < 0) throw std::out_of_range("JTB::Str::slice error: `start` is less than zero.");
     long size = content.size();
-    if (end > size) { throw std::out_of_range("JTB::Str::slice error: `end` is past size of string."); }
+    if (end > size) end = size;
     if (end >= 0 && end <= start) return "";
     if (end < 0 && size + end <= start) return "";
     if (end >= 0) {
@@ -389,7 +389,7 @@ Str Str::slice(long start, long end) const {
     }
 }
 
-Str Str::remove(Str s) const {
+inline Str Str::remove(Str s) const {
     auto size = content.size();
     auto ssize = s.size();
     Str ret = "";
@@ -407,7 +407,7 @@ Str Str::remove(Str s) const {
     return ret;
 }
 
-Str& Str::insert(Str s, std::size_t i) {
+inline Str& Str::insert(Str s, std::size_t i) {
     Str tail = (*this).substr(i);
     (*this).fill(s, i, 1);
     auto ssize = s.size();
@@ -416,13 +416,13 @@ Str& Str::insert(Str s, std::size_t i) {
     return (*this);
 }
 
-Str Str::popAt(std::size_t start, std::size_t size) {
+inline Str Str::popAt(std::size_t start, std::size_t size) {
     Str ret = (*this).substr(start, size);
     (*this) = (*this).substr(0, start).concat(start+size >= content.size() ? "" : (*this).substr(start+size));
     return ret;
 }
 
-Str& Str::fill(Str s, std::size_t start, std::size_t copies) {
+inline Str& Str::fill(Str s, std::size_t start, std::size_t copies) {
     auto contentsize = content.size();
     if (start >= contentsize) throw std::out_of_range("JTB::Str::fill error. Start is past the string size.");
     auto ssize = s.size();
@@ -437,7 +437,7 @@ Str& Str::fill(Str s, std::size_t start, std::size_t copies) {
     return (*this);
 }
 
-Str Str::pop(std::size_t n) { 
+inline Str Str::pop(std::size_t n) { 
     auto contentsize = content.size();
     if (n > contentsize) { 
 	Str ret = (*this);
@@ -449,7 +449,7 @@ Str Str::pop(std::size_t n) {
     return ret; 
 }
 
-Str Str::frontPop(std::size_t n) {
+inline Str Str::frontPop(std::size_t n) {
     auto contentsize = content.size();
     if (n > contentsize) { 
 	Str ret = *this;
@@ -464,7 +464,7 @@ Str Str::frontPop(std::size_t n) {
     return ret;
 }
 
-Str& Str::frontPush(Str s) {
+inline Str& Str::frontPush(Str s) {
     (*this).push(s);
     int contentsize = content.size();
     int pushsize = s.size();
@@ -514,7 +514,7 @@ constexpr std::size_t Str::find(const char c, int pos) const {
     return Str::NPOS;
 }
 
-Str Str::sliceAtChar(const char c, int offset) const {
+inline Str Str::sliceAtChar(const char c, int offset) const {
     return (*this).slice(0,(*this).find(c)+offset);
 }
 
@@ -579,7 +579,7 @@ constexpr std::size_t Str::rfindNth(Str s, std::size_t n, int pos) const {
     return ret;
 }
 
-Str Str::substrInBounds(Str open, Str close, int n, int m, Bounds bounds) const {
+inline Str Str::substrInBounds(Str open, Str close, int n, int m, Bounds bounds) const {
     auto openpos = (*this).findNth(open, n);
     if (openpos == Str::NPOS) return "";
     auto closepos = 0;
@@ -593,7 +593,7 @@ Str Str::substrInBounds(Str open, Str close, int n, int m, Bounds bounds) const 
     return "";
 }
 
-Str Str::substrInBounds(Str open, Str close, Bounds bounds) const {
+inline Str Str::substrInBounds(Str open, Str close, Bounds bounds) const {
     return (*this).substrInBounds(open, close, 1, -1, bounds);
 }
 
@@ -609,14 +609,14 @@ constexpr std::size_t Str::findFirstCharFromString(Str s) const {
     return min;
 }
 
-Str::Bounds getBound(Str::SplitMode m) {
+inline Str::Bounds getBound(Str::SplitMode m) {
     if (m == Str::SplitMode::LISTEXC || m == Str::SplitMode::CHUNKEXC) {
 	return Str::Bounds::EXC;
     }
     else return Str::Bounds::INC;
 }
 
-Str::__ExtractedSplitMode getMode(Str::SplitMode m) {
+inline Str::__ExtractedSplitMode getMode(Str::SplitMode m) {
     if (m == Str::SplitMode::LISTINC || m == Str::SplitMode::LISTEXC) {
 	return  Str::__ExtractedSplitMode::LIST;
     }
@@ -697,7 +697,7 @@ constexpr Vec<Str> Str::split(Str separator, Str::SplitMode mode) const {
     return ret;
 }
 
-Str Str::lower() const {
+inline Str Str::lower() const {
     std::string ret; 
     for (auto c : content) {
 	ret.push_back(tolower(c));
@@ -705,7 +705,7 @@ Str Str::lower() const {
     return ret;
 }
 
-Str Str::upper() const {
+inline Str Str::upper() const {
     std::string ret; 
     for (auto c : content) {
 	ret.push_back(toupper(c));
@@ -713,7 +713,7 @@ Str Str::upper() const {
     return ret;
 }
 
-Str Str::substr(std::size_t start, long n) const {
+inline Str Str::substr(std::size_t start, long n) const {
     if (n == Str::NPOS) {
 	if (start > content.size()-1) throw std::out_of_range("JTB::Str::substr error. Start position out of range.");
 	return content.substr(start);
@@ -787,7 +787,7 @@ constexpr bool Str::includes(const char c) const {
     return content.find(c) != std::string::npos; 
 }
 
-Str Str::trim(std::string stuffToTrim) const { 
+inline Str Str::trim(std::string stuffToTrim) const { 
     std::string::size_type front = 0;
     std::string::size_type back = content.size();
     while (stuffToTrim.find(content.at(front)) != std::string::npos) front++;
