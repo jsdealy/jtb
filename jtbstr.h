@@ -258,6 +258,8 @@ public:
      * string and returns them (as a string). <- 01/18/24 18:45:22 */ 
     Str pop(std::size_t n = 1); 
 
+    Str& clear();
+
     /* Pushing s onto the back of the string. <- 01/18/24 18:42:17 */ 
     Str& push(Str s) { content.append(s.stdstr()); return *this; }
 
@@ -447,6 +449,11 @@ inline Str Str::pop(std::size_t n) {
     Str ret = content.substr(contentsize-n); 
     content = content.substr(0, contentsize-n);
     return ret; 
+}
+
+inline Str& Str::clear() {
+    content.clear();
+    return (*this);
 }
 
 inline Str Str::frontPop(std::size_t n) {
