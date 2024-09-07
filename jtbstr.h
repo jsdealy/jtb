@@ -589,6 +589,8 @@ constexpr std::size_t Str::rfindNth(Str s, std::size_t n, int pos) const {
 inline Str Str::substrInBounds(Str open, Str close, int n, int m, Bounds bounds) const {
     auto openpos = (*this).findNth(open, n);
     if (openpos == Str::NPOS) return "";
+    std::size_t openSize {open.size()};
+    openpos = openpos + openSize - 1;
     auto closepos = 0;
     if (m > 0) { closepos = (*this).findNth(close, m, openpos+1); }
     else { closepos = (*this).rfindNth(close, m * -1); }
