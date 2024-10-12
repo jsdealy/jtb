@@ -74,10 +74,10 @@ public:
     auto size() const { return content.size(); }
 
     /* cheap iterators <= 02/09/24 19:04:15 */ 
-    using const_iterator = std::vector<T>::const_iterator;
+    using const_iterator = typename std::vector<T>::const_iterator;
     const_iterator begin() const { return content.begin(); }
     const_iterator end() const { return content.end(); }
-    using iterator = std::vector<T>::iterator;
+    using iterator = typename std::vector<T>::iterator;
     iterator begin() { return content.begin(); }
     iterator end() { return content.end(); }
 
