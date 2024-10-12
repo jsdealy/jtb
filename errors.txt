@@ -1,0 +1,579 @@
+In file included from jtbvec.h:2,
+                 from test.cpp:12:
+jtbstr.h: In member function ‘JTB::Str::iterator JTB::Str::iterator::operator++(int)’:
+jtbstr.h:30:50: warning: implicitly-declared ‘constexpr JTB::Str::iterator::iterator(const JTB::Str::iterator&)’ is deprecated [-Wdeprecated-copy]
+   30 |         iterator operator++(int) { iterator j = *this; ++i; return j; }
+      |                                                  ^~~~
+jtbstr.h:28:19: note: because ‘JTB::Str::iterator’ has user-provided ‘JTB::Str::iterator& JTB::Str::iterator::operator=(JTB::Str::iterator&)’
+   28 |         iterator& operator=(iterator& input) { i = input.expose(); return *this; }
+      |                   ^~~~~~~~
+jtbstr.h:30:68: warning: implicitly-declared ‘constexpr JTB::Str::iterator::iterator(const JTB::Str::iterator&)’ is deprecated [-Wdeprecated-copy]
+   30 |         iterator operator++(int) { iterator j = *this; ++i; return j; }
+      |                                                                    ^
+jtbstr.h:28:19: note: because ‘JTB::Str::iterator’ has user-provided ‘JTB::Str::iterator& JTB::Str::iterator::operator=(JTB::Str::iterator&)’
+   28 |         iterator& operator=(iterator& input) { i = input.expose(); return *this; }
+      |                   ^~~~~~~~
+jtbstr.h: In member function ‘JTB::Str::iterator JTB::Str::iterator::operator+(int) const’:
+jtbstr.h:33:57: warning: implicitly-declared ‘constexpr JTB::Str::iterator::iterator(const JTB::Str::iterator&)’ is deprecated [-Wdeprecated-copy]
+   33 |         iterator operator+(int j) const { iterator k = *this; k.expose() += j; return k;}
+      |                                                         ^~~~
+jtbstr.h:28:19: note: because ‘JTB::Str::iterator’ has user-provided ‘JTB::Str::iterator& JTB::Str::iterator::operator=(JTB::Str::iterator&)’
+   28 |         iterator& operator=(iterator& input) { i = input.expose(); return *this; }
+      |                   ^~~~~~~~
+jtbstr.h:33:87: warning: implicitly-declared ‘constexpr JTB::Str::iterator::iterator(const JTB::Str::iterator&)’ is deprecated [-Wdeprecated-copy]
+   33 |         iterator operator+(int j) const { iterator k = *this; k.expose() += j; return k;}
+      |                                                                                       ^
+jtbstr.h:28:19: note: because ‘JTB::Str::iterator’ has user-provided ‘JTB::Str::iterator& JTB::Str::iterator::operator=(JTB::Str::iterator&)’
+   28 |         iterator& operator=(iterator& input) { i = input.expose(); return *this; }
+      |                   ^~~~~~~~
+jtbstr.h: In member function ‘JTB::Str::iterator JTB::Str::iterator::operator-(int) const’:
+jtbstr.h:34:57: warning: implicitly-declared ‘constexpr JTB::Str::iterator::iterator(const JTB::Str::iterator&)’ is deprecated [-Wdeprecated-copy]
+   34 |         iterator operator-(int j) const { iterator k = *this; k.expose() -= j; return k;}
+      |                                                         ^~~~
+jtbstr.h:28:19: note: because ‘JTB::Str::iterator’ has user-provided ‘JTB::Str::iterator& JTB::Str::iterator::operator=(JTB::Str::iterator&)’
+   28 |         iterator& operator=(iterator& input) { i = input.expose(); return *this; }
+      |                   ^~~~~~~~
+jtbstr.h:34:87: warning: implicitly-declared ‘constexpr JTB::Str::iterator::iterator(const JTB::Str::iterator&)’ is deprecated [-Wdeprecated-copy]
+   34 |         iterator operator-(int j) const { iterator k = *this; k.expose() -= j; return k;}
+      |                                                                                       ^
+jtbstr.h:28:19: note: because ‘JTB::Str::iterator’ has user-provided ‘JTB::Str::iterator& JTB::Str::iterator::operator=(JTB::Str::iterator&)’
+   28 |         iterator& operator=(iterator& input) { i = input.expose(); return *this; }
+      |                   ^~~~~~~~
+jtbstr.h: In member function ‘JTB::Str::const_iterator JTB::Str::const_iterator::operator++(int)’:
+jtbstr.h:50:62: warning: implicitly-declared ‘constexpr JTB::Str::const_iterator::const_iterator(const JTB::Str::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+   50 |         const_iterator operator++(int) { const_iterator j = *this; ++i; return j; }
+      |                                                              ^~~~
+jtbstr.h:48:25: note: because ‘JTB::Str::const_iterator’ has user-provided ‘JTB::Str::const_iterator& JTB::Str::const_iterator::operator=(JTB::Str::const_iterator&)’
+   48 |         const_iterator& operator=(const_iterator& input) { i = input.expose(); return *this; }
+      |                         ^~~~~~~~
+jtbstr.h:50:80: warning: implicitly-declared ‘constexpr JTB::Str::const_iterator::const_iterator(const JTB::Str::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+   50 |         const_iterator operator++(int) { const_iterator j = *this; ++i; return j; }
+      |                                                                                ^
+jtbstr.h:48:25: note: because ‘JTB::Str::const_iterator’ has user-provided ‘JTB::Str::const_iterator& JTB::Str::const_iterator::operator=(JTB::Str::const_iterator&)’
+   48 |         const_iterator& operator=(const_iterator& input) { i = input.expose(); return *this; }
+      |                         ^~~~~~~~
+jtbstr.h: In member function ‘JTB::Str::iterator JTB::Str::begin()’:
+jtbstr.h:72:61: warning: implicitly-declared ‘constexpr JTB::Str::iterator::iterator(const JTB::Str::iterator&)’ is deprecated [-Wdeprecated-copy]
+   72 |     iterator begin() { iterator i = content.begin(); return i; }
+      |                                                             ^
+jtbstr.h:28:19: note: because ‘JTB::Str::iterator’ has user-provided ‘JTB::Str::iterator& JTB::Str::iterator::operator=(JTB::Str::iterator&)’
+   28 |         iterator& operator=(iterator& input) { i = input.expose(); return *this; }
+      |                   ^~~~~~~~
+jtbstr.h: In member function ‘JTB::Str::iterator JTB::Str::end()’:
+jtbstr.h:73:57: warning: implicitly-declared ‘constexpr JTB::Str::iterator::iterator(const JTB::Str::iterator&)’ is deprecated [-Wdeprecated-copy]
+   73 |     iterator end() { iterator i = content.end(); return i; }
+      |                                                         ^
+jtbstr.h:28:19: note: because ‘JTB::Str::iterator’ has user-provided ‘JTB::Str::iterator& JTB::Str::iterator::operator=(JTB::Str::iterator&)’
+   28 |         iterator& operator=(iterator& input) { i = input.expose(); return *this; }
+      |                   ^~~~~~~~
+jtbstr.h: In member function ‘JTB::Str::const_iterator JTB::Str::const_begin() const’:
+jtbstr.h:74:114: warning: implicitly-declared ‘constexpr JTB::Str::const_iterator::const_iterator(const JTB::Str::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+   74 |     const_iterator const_begin() const { const_iterator i = std::string::const_iterator(content.begin()); return i; }
+      |                                                                                                                  ^
+jtbstr.h:48:25: note: because ‘JTB::Str::const_iterator’ has user-provided ‘JTB::Str::const_iterator& JTB::Str::const_iterator::operator=(JTB::Str::const_iterator&)’
+   48 |         const_iterator& operator=(const_iterator& input) { i = input.expose(); return *this; }
+      |                         ^~~~~~~~
+jtbstr.h: In member function ‘JTB::Str::const_iterator JTB::Str::const_end() const’:
+jtbstr.h:75:110: warning: implicitly-declared ‘constexpr JTB::Str::const_iterator::const_iterator(const JTB::Str::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+   75 |     const_iterator const_end() const { const_iterator i = std::string::const_iterator(content.end()); return i; }
+      |                                                                                                              ^
+jtbstr.h:48:25: note: because ‘JTB::Str::const_iterator’ has user-provided ‘JTB::Str::const_iterator& JTB::Str::const_iterator::operator=(JTB::Str::const_iterator&)’
+   48 |         const_iterator& operator=(const_iterator& input) { i = input.expose(); return *this; }
+      |                         ^~~~~~~~
+jtbstr.h: In member function ‘constexpr JTB::Str JTB::Str::repeat(int)’:
+jtbstr.h:133:44: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  133 |     constexpr Str repeat(int n) { Str s = *this; Str k = s; for (int i = 0; i < n-1; ++i) k += s; return k;}
+      |                                            ^~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:133:58: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  133 |     constexpr Str repeat(int n) { Str s = *this; Str k = s; for (int i = 0; i < n-1; ++i) k += s; return k;}
+      |                                                          ^
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:133:106: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  133 |     constexpr Str repeat(int n) { Str s = *this; Str k = s; for (int i = 0; i < n-1; ++i) k += s; return k;}
+      |                                                                                                          ^
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h: In member function ‘JTB::Str JTB::Str::map(std::function<JTB::Str(char)>) const’:
+jtbstr.h:312:16: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  312 |         return ret;
+      |                ^~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h: In member function ‘JTB::Str JTB::Str::filter(std::function<bool(char)>) const’:
+jtbstr.h:342:16: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  342 |         return ret;
+      |                ^~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h: In member function ‘constexpr JTB::Str JTB::Str::remove(JTB::Str) const’:
+jtbstr.h:379:31: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  379 |     auto sstart = (*this).find(s);
+      |                   ~~~~~~~~~~~~^~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:198:32: note:   initializing argument 1 of ‘constexpr std::size_t JTB::Str::find(JTB::Str, int) const’
+  198 |     constexpr std::size_t find(Str, int = 0) const;
+      |                                ^~~
+jtbstr.h:380:37: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  380 |     if (sstart == Str::NPOS) return *this;
+      |                                     ^~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:381:18: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  381 |     while (start < size && sstart != Str::NPOS) {
+      |            ~~~~~~^~~~~~
+jtbstr.h:382:20: warning: comparison of integer expressions of different signedness: ‘long unsigned int’ and ‘int’ [-Wsign-compare]
+  382 |         if (sstart != start) ret.push((*this).substr(start, sstart - start));
+      |             ~~~~~~~^~~~~~~~
+jtbstr.h:384:30: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  384 |         sstart = (*this).find(s, sstart + ssize);
+      |                  ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:198:32: note:   initializing argument 1 of ‘constexpr std::size_t JTB::Str::find(JTB::Str, int) const’
+  198 |     constexpr std::size_t find(Str, int = 0) const;
+      |                                ^~~
+jtbstr.h:386:15: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  386 |     if (start < size) {
+      |         ~~~~~~^~~~~~
+jtbstr.h:389:12: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  389 |     return ret;
+      |            ^~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h: In member function ‘constexpr JTB::Str& JTB::Str::insert(JTB::Str, std::size_t)’:
+jtbstr.h:394:17: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  394 |     (*this).fill(s, i, 1);
+      |     ~~~~~~~~~~~~^~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:278:25: note:   initializing argument 1 of ‘constexpr JTB::Str& JTB::Str::fill(JTB::Str, std::size_t, std::size_t)’
+  278 |     constexpr Str& fill(Str, std::size_t = 0, std::size_t = Str::NPOS);
+      |                         ^~~
+jtbstr.h:396:48: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  396 |     if (content.size() <= i+ssize) (*this).push(tail);
+      |                                    ~~~~~~~~~~~~^~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:248:29: note:   initializing argument 1 of ‘constexpr JTB::Str& JTB::Str::push(JTB::Str)’
+  248 |     constexpr Str& push(Str s) { content.append(s.stdstr()); return *this; }
+      |                         ~~~~^
+jtbstr.h:397:22: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  397 |     else (*this).fill(s, i+ssize, 1);
+      |          ~~~~~~~~~~~~^~~~~~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:278:25: note:   initializing argument 1 of ‘constexpr JTB::Str& JTB::Str::fill(JTB::Str, std::size_t, std::size_t)’
+  278 |     constexpr Str& fill(Str, std::size_t = 0, std::size_t = Str::NPOS);
+      |                         ^~~
+jtbstr.h: In member function ‘constexpr JTB::Str JTB::Str::popAt(std::size_t, std::size_t)’:
+jtbstr.h:404:12: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  404 |     return ret;
+      |            ^~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h: In member function ‘constexpr JTB::Str JTB::Str::pop(std::size_t)’:
+jtbstr.h:425:25: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  425 |         Str ret = (*this);
+      |                         ^
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:427:16: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  427 |         return ret;
+      |                ^~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:431:12: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  431 |     return ret;
+      |            ^~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h: In member function ‘constexpr JTB::Str JTB::Str::frontPop(std::size_t)’:
+jtbstr.h:437:20: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  437 |         Str ret = *this;
+      |                    ^~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:439:16: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  439 |         return ret;
+      |                ^~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:442:24: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  442 |     for (auto i = 0; i < contentsize-n; i++) {
+      |                      ~~^~~~~~~~~~~~~~~
+jtbstr.h:446:12: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  446 |     return ret;
+      |            ^~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h: In member function ‘constexpr JTB::Str& JTB::Str::frontPush(JTB::Str)’:
+jtbstr.h:450:17: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  450 |     (*this).push(s);
+      |     ~~~~~~~~~~~~^~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:248:29: note:   initializing argument 1 of ‘constexpr JTB::Str& JTB::Str::push(JTB::Str)’
+  248 |     constexpr Str& push(Str s) { content.append(s.stdstr()); return *this; }
+      |                         ~~~~^
+jtbstr.h: In member function ‘constexpr bool JTB::Str::boolFind(JTB::Str, int) const’:
+jtbstr.h:463:24: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  463 |     return (*this).find(s,pos) != NPOS;
+      |            ~~~~~~~~~~~~^~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:198:32: note:   initializing argument 1 of ‘constexpr std::size_t JTB::Str::find(JTB::Str, int) const’
+  198 |     constexpr std::size_t find(Str, int = 0) const;
+      |                                ^~~
+jtbstr.h: In member function ‘constexpr std::size_t JTB::Str::find(JTB::Str, int) const’:
+jtbstr.h:468:25: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  468 |     if (pos >= 0 && pos >= size) return Str::NPOS;
+      |                     ~~~~^~~~~~~
+jtbstr.h:469:31: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  469 |     if (pos < 0 && (pos * -1) > size) return Str::NPOS;
+      |                    ~~~~~~~~~~~^~~~~~
+jtbstr.h:475:24: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  475 |         while (matches < searchsize && j < size && content[j] == s.at(matches)) {
+      |                ~~~~~~~~^~~~~~~~~~~~
+jtbstr.h:479:21: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  479 |         if (matches == searchsize) return i;
+      |             ~~~~~~~~^~~~~~~~~~~~~
+jtbstr.h: In member function ‘constexpr std::size_t JTB::Str::count(JTB::Str, int) const’:
+jtbstr.h:490:25: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  490 |     if (pos >= 0 && pos >= size) return 0;
+      |                     ~~~~^~~~~~~
+jtbstr.h:491:31: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  491 |     if (pos < 0 && (pos * -1) > size) return 0;
+      |                    ~~~~~~~~~~~^~~~~~
+jtbstr.h:498:24: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  498 |         while (matches < searchsize && j < size && content[j] == s.at(matches)) {
+      |                ~~~~~~~~^~~~~~~~~~~~
+jtbstr.h:502:21: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  502 |         if (matches == searchsize) {
+      |             ~~~~~~~~^~~~~~~~~~~~~
+jtbstr.h: In member function ‘constexpr std::size_t JTB::Str::rfind(JTB::Str, int) const’:
+jtbstr.h:513:58: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  513 |     for (int i = pos < 0 ? size + pos : pos; i >= 0 && i >= searchsize - 1; i--) {
+      |                                                        ~~^~~~~~~~~~~~~~~~~
+jtbstr.h: In member function ‘constexpr std::size_t JTB::Str::findNth(JTB::Str, std::size_t, std::size_t) const’:
+jtbstr.h:530:27: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  530 |         ret = (*this).find(s, pos);
+      |               ~~~~~~~~~~~~^~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:466:43: note:   initializing argument 1 of ‘constexpr std::size_t JTB::Str::find(JTB::Str, int) const’
+  466 | constexpr std::size_t Str::find(const Str s, int pos) const {
+      |                                 ~~~~~~~~~~^
+jtbstr.h: In member function ‘constexpr std::size_t JTB::Str::rfindNth(JTB::Str, std::size_t, int) const’:
+jtbstr.h:542:28: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  542 |         ret = (*this).rfind(s, pos);
+      |               ~~~~~~~~~~~~~^~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:510:38: note:   initializing argument 1 of ‘constexpr std::size_t JTB::Str::rfind(JTB::Str, int) const’
+  510 | constexpr std::size_t Str::rfind(Str s, int pos) const {
+      |                                  ~~~~^
+jtbstr.h: In member function ‘constexpr JTB::Str JTB::Str::substrInBounds(JTB::Str, JTB::Str, int, int, Bounds) const’:
+jtbstr.h:550:35: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  550 |     auto openpos = (*this).findNth(open, n);
+      |                    ~~~~~~~~~~~~~~~^~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:525:40: note:   initializing argument 1 of ‘constexpr std::size_t JTB::Str::findNth(JTB::Str, std::size_t, std::size_t) const’
+  525 | constexpr std::size_t Str::findNth(Str s, std::size_t n, std::size_t pos) const {
+      |                                    ~~~~^
+jtbstr.h:553:44: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  553 |     if (m > 0) { closepos = (*this).findNth(close, m, openpos+1); }
+      |                             ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:525:40: note:   initializing argument 1 of ‘constexpr std::size_t JTB::Str::findNth(JTB::Str, std::size_t, std::size_t) const’
+  525 | constexpr std::size_t Str::findNth(Str s, std::size_t n, std::size_t pos) const {
+      |                                    ~~~~^
+jtbstr.h:554:39: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  554 |     else { closepos = (*this).rfindNth(close, m * -1); }
+      |                       ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:537:41: note:   initializing argument 1 of ‘constexpr std::size_t JTB::Str::rfindNth(JTB::Str, std::size_t, int) const’
+  537 | constexpr std::size_t Str::rfindNth(Str s, std::size_t n, int pos) const {
+      |                                     ~~~~^
+jtbstr.h:555:18: warning: comparison of integer expressions of different signedness: ‘int’ and ‘JTB::Str::<unnamed enum>’ [-Wsign-compare]
+  555 |     if (closepos == Str::NPOS || closepos <= openpos) return "";
+      |         ~~~~~~~~~^~~~~~~~~~~~
+jtbstr.h:555:43: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  555 |     if (closepos == Str::NPOS || closepos <= openpos) return "";
+      |                                  ~~~~~~~~~^~~~~~~~~~
+jtbstr.h:556:42: warning: comparison of integer expressions of different signedness: ‘int’ and ‘JTB::Str::<unnamed enum>’ [-Wsign-compare]
+  556 |     if (openpos != Str::NPOS && closepos != Str::NPOS) {
+      |                                 ~~~~~~~~~^~~~~~~~~~~~
+jtbstr.h: In member function ‘constexpr JTB::Str JTB::Str::substrInBounds(JTB::Str, JTB::Str, Bounds) const’:
+jtbstr.h:564:34: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  564 |     return (*this).substrInBounds(open, close, 1, -1, bounds);
+      |            ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:549:39: note:   initializing argument 1 of ‘constexpr JTB::Str JTB::Str::substrInBounds(JTB::Str, JTB::Str, int, int, Bounds) const’
+  549 | constexpr Str Str::substrInBounds(Str open, Str close, int n, int m, Bounds bounds) const {
+      |                                   ~~~~^~~~
+jtbstr.h:564:34: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  564 |     return (*this).substrInBounds(open, close, 1, -1, bounds);
+      |            ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:549:49: note:   initializing argument 2 of ‘constexpr JTB::Str JTB::Str::substrInBounds(JTB::Str, JTB::Str, int, int, Bounds) const’
+  549 | constexpr Str Str::substrInBounds(Str open, Str close, int n, int m, Bounds bounds) const {
+      |                                             ~~~~^~~~~
+jtbstr.h: In member function ‘constexpr std::size_t JTB::Str::findFirstCharFromString(JTB::Str) const’:
+jtbstr.h:572:24: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  572 |     for (auto i = 1; i < size; i++) {
+      |                      ~~^~~~~~
+jtbstr.h: In member function ‘constexpr JTB::Vec<JTB::Str> JTB::Str::split(JTB::Str, SplitMode) const’:
+jtbstr.h:598:34: warning: implicitly-declared ‘constexpr JTB::Vec<JTB::Str>::Vec(const JTB::Vec<JTB::Str>&)’ is deprecated [-Wdeprecated-copy]
+  598 |     if (contentsize == 0) return ret;
+      |                                  ^~~
+In file included from jtbstr.h:12:
+jtbvec_base.h:384:19: note: because ‘JTB::Vec<JTB::Str>’ has user-provided ‘constexpr JTB::Vec<T>& JTB::Vec<T>::operator=(const JTB::Vec<T>&) [with T = JTB::Str]’
+  384 | constexpr Vec<T>& Vec<T>::operator=(const Vec<T>& rhs) {
+      |                   ^~~~~~
+jtbstr.h:602:92: warning: implicitly-declared ‘constexpr JTB::Vec<JTB::Str>::Vec(const JTB::Vec<JTB::Str>&)’ is deprecated [-Wdeprecated-copy]
+  602 |     if (getMode(mode) == Str::__ExtractedSplitMode::CHUNK && sepsize > contentsize) return ret;
+      |                                                                                            ^~~
+jtbvec_base.h:384:19: note: because ‘JTB::Vec<JTB::Str>’ has user-provided ‘constexpr JTB::Vec<T>& JTB::Vec<T>::operator=(const JTB::Vec<T>&) [with T = JTB::Str]’
+  384 | constexpr Vec<T>& Vec<T>::operator=(const Vec<T>& rhs) {
+      |                   ^~~~~~
+jtbstr.h:666:12: warning: implicitly-declared ‘constexpr JTB::Vec<JTB::Str>::Vec(const JTB::Vec<JTB::Str>&)’ is deprecated [-Wdeprecated-copy]
+  666 |     return ret;
+      |            ^~~
+jtbvec_base.h:384:19: note: because ‘JTB::Vec<JTB::Str>’ has user-provided ‘constexpr JTB::Vec<T>& JTB::Vec<T>::operator=(const JTB::Vec<T>&) [with T = JTB::Str]’
+  384 | constexpr Vec<T>& Vec<T>::operator=(const Vec<T>& rhs) {
+      |                   ^~~~~~
+jtbstr.h: In member function ‘constexpr JTB::Str JTB::Str::substr(std::size_t, long int) const’:
+jtbstr.h:686:11: warning: comparison of integer expressions of different signedness: ‘long int’ and ‘JTB::Str::<unnamed enum>’ [-Wsign-compare]
+  686 |     if (n == Str::NPOS) {
+      |         ~~^~~~~~~~~~~~
+jtbstr.h: In function ‘JTB::Str& JTB::operator<<(Str&, const Str&)’:
+jtbstr.h:719:11: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  719 |     s.push(rhs); return s;
+      |     ~~~~~~^~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:248:29: note:   initializing argument 1 of ‘constexpr JTB::Str& JTB::Str::push(JTB::Str)’
+  248 |     constexpr Str& push(Str s) { content.append(s.stdstr()); return *this; }
+      |                         ~~~~^
+In file included from test.cpp:15:
+jtbregex.h: In constructor ‘JTB::Regex::Regex(JTB::Str)’:
+jtbregex.h:37:19: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+   37 |     Regex(Str s): pattern {s} {};
+      |                   ^~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbregex.h: In static member function ‘static bool JTB::Regex::specialCharMatch(JTB::Str, JTB::Str::const_iterator&, JTB::Vec<JTB::ConstPair<long unsigned int&, int> >)’:
+jtbregex.h:55:19: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+   55 |         if (s.find(regAtom.first()) != Str::NPOS && *index == regAtom.second()) {
+      |             ~~~~~~^~~~~~~~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:466:43: note:   initializing argument 1 of ‘constexpr std::size_t JTB::Str::find(JTB::Str, int) const’
+  466 | constexpr std::size_t Str::find(const Str s, int pos) const {
+      |                                 ~~~~~~~~~~^
+jtbregex.h: In static member function ‘static JTB::RegexMatch JTB::Regex::innerMatch(JTB::Regex, JTB::Str::const_iterator&, JTB::Str::const_iterator)’:
+jtbregex.h:147:17: warning: implicitly-declared ‘constexpr JTB::Str::const_iterator::const_iterator(const JTB::Str::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  147 |     auto init = index;
+      |                 ^~~~~
+jtbstr.h:48:25: note: because ‘JTB::Str::const_iterator’ has user-provided ‘JTB::Str::const_iterator& JTB::Str::const_iterator::operator=(JTB::Str::const_iterator&)’
+   48 |         const_iterator& operator=(const_iterator& input) { i = input.expose(); return *this; }
+      |                         ^~~~~~~~
+jtbregex.h:187:56: warning: comparison of integer expressions of different signedness: ‘std::size_t’ {aka ‘long unsigned int’} and ‘long int’ [-Wsign-compare]
+  187 |             while (iterlimits.most < 0 || groupMatches < iterlimits.most) {
+      |                                           ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+jtbregex.h:192:30: warning: implicitly-declared ‘constexpr JTB::Str::const_iterator::const_iterator(const JTB::Str::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  192 |                 auto reset = index;
+      |                              ^~~~~
+jtbstr.h:48:25: note: because ‘JTB::Str::const_iterator’ has user-provided ‘JTB::Str::const_iterator& JTB::Str::const_iterator::operator=(JTB::Str::const_iterator&)’
+   48 |         const_iterator& operator=(const_iterator& input) { i = input.expose(); return *this; }
+      |                         ^~~~~~~~
+jtbregex.h:193:32: warning: implicitly-declared ‘constexpr JTB::Str::const_iterator::const_iterator(const JTB::Str::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  193 |                 if (!innerMatch(reg.pattern.slice(patIndex+1, closeIndex), index, end)) {
+      |                      ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+jtbstr.h:48:25: note: because ‘JTB::Str::const_iterator’ has user-provided ‘JTB::Str::const_iterator& JTB::Str::const_iterator::operator=(JTB::Str::const_iterator&)’
+   48 |         const_iterator& operator=(const_iterator& input) { i = input.expose(); return *this; }
+      |                         ^~~~~~~~
+jtbregex.h:143:95: note:   initializing argument 3 of ‘static JTB::RegexMatch JTB::Regex::innerMatch(JTB::Regex, JTB::Str::const_iterator&, JTB::Str::const_iterator)’
+  143 | RegexMatch Regex::innerMatch(Regex reg, Str::const_iterator& index, const Str::const_iterator end) {
+      |                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+jtbregex.h:198:42: warning: comparison of integer expressions of different signedness: ‘long int’ and ‘std::size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+  198 |                     if (iterlimits.least > groupMatches) {
+      |                         ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+jtbregex.h:258:59: warning: comparison of integer expressions of different signedness: ‘std::size_t’ {aka ‘long unsigned int’} and ‘long int’ [-Wsign-compare]
+  258 |             while (iterlimits.most < 0 || groupMatchCount < iterlimits.most) {
+      |                                           ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+jtbregex.h:267:42: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  267 |                 else if (specialCharMatch(group, index, { { groupMatchCount, 1 } })) {
+      |                          ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbregex.h:53:34: note:   initializing argument 1 of ‘static bool JTB::Regex::specialCharMatch(JTB::Str, JTB::Str::const_iterator&, JTB::Vec<JTB::ConstPair<long unsigned int&, int> >)’
+   53 | bool Regex::specialCharMatch(Str s, Str::const_iterator& index, Vec<ConstPair<std::size_t&, int>> stuffToInc) {
+      |                              ~~~~^
+jtbregex.h:288:41: warning: comparison of integer expressions of different signedness: ‘std::size_t’ {aka ‘long unsigned int’} and ‘long int’ [-Wsign-compare]
+  288 |                     if (groupMatchCount < iterlimits.least) return RegexMatch(false, 0, 0);
+      |                         ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+jtbregex.h: In member function ‘JTB::RegexMatch JTB::Regex::match(const JTB::Str&) const’:
+jtbregex.h:315:73: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  315 |     if (!(*this).validate()) { Str s {"Invalid Regex pattern: "}; s.push(pattern); throw std::runtime_error(s.c_str()); }
+      |                                                                   ~~~~~~^~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbstr.h:248:29: note:   initializing argument 1 of ‘constexpr JTB::Str& JTB::Str::push(JTB::Str)’
+  248 |     constexpr Str& push(Str s) { content.append(s.stdstr()); return *this; }
+      |                         ~~~~^
+jtbregex.h:317:14: warning: comparison of unsigned expression in ‘< 0’ is always false [-Wtype-limits]
+  317 |     if (stop < 0) return RegexMatch(false, 0, 0);
+      |         ~~~~~^~~
+jtbregex.h:321:24: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  321 |     for (auto i = 0; i <= stop; i++) {
+      |                      ~~^~~~~~~
+jtbregex.h: In copy constructor ‘constexpr JTB::Regex::Regex(const JTB::Regex&)’:
+jtbregex.h:23:7: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+   23 | class Regex {
+      |       ^~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbregex.h: In member function ‘JTB::RegexMatch JTB::Regex::match(const JTB::Str&) const’:
+jtbregex.h:324:36: note: synthesized method ‘constexpr JTB::Regex::Regex(const JTB::Regex&)’ first required here
+  324 |         RegexMatch ret = innerMatch((*this), index, end);
+      |                          ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+jtbregex.h:143:36: note:   initializing argument 1 of ‘static JTB::RegexMatch JTB::Regex::innerMatch(JTB::Regex, JTB::Str::const_iterator&, JTB::Str::const_iterator)’
+  143 | RegexMatch Regex::innerMatch(Regex reg, Str::const_iterator& index, const Str::const_iterator end) {
+      |                              ~~~~~~^~~
+jtbregex.h:324:36: warning: implicitly-declared ‘constexpr JTB::Str::const_iterator::const_iterator(const JTB::Str::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  324 |         RegexMatch ret = innerMatch((*this), index, end);
+      |                          ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+jtbstr.h:48:25: note: because ‘JTB::Str::const_iterator’ has user-provided ‘JTB::Str::const_iterator& JTB::Str::const_iterator::operator=(JTB::Str::const_iterator&)’
+   48 |         const_iterator& operator=(const_iterator& input) { i = input.expose(); return *this; }
+      |                         ^~~~~~~~
+jtbregex.h:143:95: note:   initializing argument 3 of ‘static JTB::RegexMatch JTB::Regex::innerMatch(JTB::Regex, JTB::Str::const_iterator&, JTB::Str::const_iterator)’
+  143 | RegexMatch Regex::innerMatch(Regex reg, Str::const_iterator& index, const Str::const_iterator end) {
+      |                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+test.cpp: In lambda function:
+test.cpp:65:34: warning: unused parameter ‘s’ [-Wunused-parameter]
+   65 |     testvec.forEach([&](JTB::Str s) { ++count; return; });
+      |                         ~~~~~~~~~^
+In file included from test.cpp:11:
+jtbextras.h: In instantiation of ‘JTB::ConstPair<X, Y>::ConstPair(X, Y) [with X = JTB::Str; Y = char]’:
+jtbregex.h:108:1:   required from here
+jtbextras.h:13:26: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+   13 |     ConstPair(X x, Y y): xcontent(x), ycontent(y) {};
+      |                          ^~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbextras.h: In instantiation of ‘JTB::ConstPair<X, Y>::ConstPair(X, Y) [with X = JTB::Str; Y = JTB::Str]’:
+jtbregex.h:112:85:   required from here
+jtbextras.h:13:26: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+   13 |     ConstPair(X x, Y y): xcontent(x), ycontent(y) {};
+      |                          ^~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbextras.h:13:39: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+   13 |     ConstPair(X x, Y y): xcontent(x), ycontent(y) {};
+      |                                       ^~~~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbvec_base.h: In instantiation of ‘void JTB::Vec<T>::forEach(std::function<void(T)>) const [with T = JTB::Str]’:
+test.cpp:65:20:   required from here
+jtbvec_base.h:263:21: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+  263 |             callback(elem);
+      |             ~~~~~~~~^~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+In file included from /usr/include/c++/13.2.1/functional:59,
+                 from jtbstr.h:7:
+/usr/include/c++/13.2.1/bits/std_function.h:587:27: note:   initializing argument 1 of ‘_Res std::function<_Res(_ArgTypes ...)>::operator()(_ArgTypes ...) const [with _Res = void; _ArgTypes = {JTB::Str}]’
+  587 |       operator()(_ArgTypes... __args) const
+      |                  ~~~~~~~~~^~~~~~~~~~
+jtbextras.h: In instantiation of ‘constexpr void std::_Construct(_Tp*, _Args&& ...) [with _Tp = JTB::ConstPair<JTB::Str, char>; _Args = {const JTB::ConstPair<JTB::Str, char>&}]’:
+/usr/include/c++/13.2.1/bits/stl_uninitialized.h:120:21:   required from ‘constexpr _ForwardIterator std::__do_uninit_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = const JTB::ConstPair<JTB::Str, char>*; _ForwardIterator = JTB::ConstPair<JTB::Str, char>*]’
+/usr/include/c++/13.2.1/bits/stl_uninitialized.h:371:30:   required from ‘constexpr _ForwardIterator std::__uninitialized_copy_a(_InputIterator, _InputIterator, _ForwardIterator, allocator<_Tp>&) [with _InputIterator = const JTB::ConstPair<JTB::Str, char>*; _ForwardIterator = JTB::ConstPair<JTB::Str, char>*; _Tp = JTB::ConstPair<JTB::Str, char>]’
+/usr/include/c++/13.2.1/bits/stl_vector.h:1692:33:   required from ‘constexpr void std::vector<_Tp, _Alloc>::_M_range_initialize(_ForwardIterator, _ForwardIterator, std::forward_iterator_tag) [with _ForwardIterator = const JTB::ConstPair<JTB::Str, char>*; _Tp = JTB::ConstPair<JTB::Str, char>; _Alloc = std::allocator<JTB::ConstPair<JTB::Str, char> >]’
+/usr/include/c++/13.2.1/bits/stl_vector.h:679:21:   required from ‘constexpr std::vector<_Tp, _Alloc>::vector(std::initializer_list<_Tp>, const allocator_type&) [with _Tp = JTB::ConstPair<JTB::Str, char>; _Alloc = std::allocator<JTB::ConstPair<JTB::Str, char> >; allocator_type = std::allocator<JTB::ConstPair<JTB::Str, char> >]’
+jtbvec_base.h:22:41:   required from ‘JTB::Vec<T>::Vec(std::initializer_list<_Tp>) [with T = JTB::ConstPair<JTB::Str, char>]’
+jtbregex.h:108:1:   required from here
+jtbextras.h:6:7: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+    6 | class ConstPair {
+      |       ^~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+In file included from /usr/include/c++/13.2.1/bits/char_traits.h:57,
+                 from /usr/include/c++/13.2.1/string:42,
+                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
+                 from /usr/include/c++/13.2.1/iomanip:42,
+                 from test.cpp:2:
+/usr/include/c++/13.2.1/bits/stl_construct.h:119:7: note: synthesized method ‘constexpr JTB::ConstPair<JTB::Str, char>::ConstPair(const JTB::ConstPair<JTB::Str, char>&)’ first required here
+  119 |       ::new((void*)__p) _Tp(std::forward<_Args>(__args)...);
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+jtbextras.h: In instantiation of ‘constexpr void std::_Construct(_Tp*, _Args&& ...) [with _Tp = JTB::ConstPair<JTB::Str, JTB::Str>; _Args = {const JTB::ConstPair<JTB::Str, JTB::Str>&}]’:
+/usr/include/c++/13.2.1/bits/stl_uninitialized.h:120:21:   required from ‘constexpr _ForwardIterator std::__do_uninit_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = const JTB::ConstPair<JTB::Str, JTB::Str>*; _ForwardIterator = JTB::ConstPair<JTB::Str, JTB::Str>*]’
+/usr/include/c++/13.2.1/bits/stl_uninitialized.h:371:30:   required from ‘constexpr _ForwardIterator std::__uninitialized_copy_a(_InputIterator, _InputIterator, _ForwardIterator, allocator<_Tp>&) [with _InputIterator = const JTB::ConstPair<JTB::Str, JTB::Str>*; _ForwardIterator = JTB::ConstPair<JTB::Str, JTB::Str>*; _Tp = JTB::ConstPair<JTB::Str, JTB::Str>]’
+/usr/include/c++/13.2.1/bits/stl_vector.h:1692:33:   required from ‘constexpr void std::vector<_Tp, _Alloc>::_M_range_initialize(_ForwardIterator, _ForwardIterator, std::forward_iterator_tag) [with _ForwardIterator = const JTB::ConstPair<JTB::Str, JTB::Str>*; _Tp = JTB::ConstPair<JTB::Str, JTB::Str>; _Alloc = std::allocator<JTB::ConstPair<JTB::Str, JTB::Str> >]’
+/usr/include/c++/13.2.1/bits/stl_vector.h:679:21:   required from ‘constexpr std::vector<_Tp, _Alloc>::vector(std::initializer_list<_Tp>, const allocator_type&) [with _Tp = JTB::ConstPair<JTB::Str, JTB::Str>; _Alloc = std::allocator<JTB::ConstPair<JTB::Str, JTB::Str> >; allocator_type = std::allocator<JTB::ConstPair<JTB::Str, JTB::Str> >]’
+jtbvec_base.h:22:41:   required from ‘JTB::Vec<T>::Vec(std::initializer_list<_Tp>) [with T = JTB::ConstPair<JTB::Str, JTB::Str>]’
+jtbregex.h:112:85:   required from here
+jtbextras.h:6:7: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+    6 | class ConstPair {
+      |       ^~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+jtbextras.h:6:7: warning: implicitly-declared ‘constexpr JTB::Str::Str(const JTB::Str&)’ is deprecated [-Wdeprecated-copy]
+    6 | class ConstPair {
+      |       ^~~~~~~~~
+jtbstr.h:89:20: note: because ‘JTB::Str’ has user-provided ‘constexpr JTB::Str& JTB::Str::operator=(const JTB::Str&)’
+   89 |     constexpr Str& operator=(const Str& s) { content = s.stdstr(); return *this; }
+      |                    ^~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_construct.h:119:7: note: synthesized method ‘constexpr JTB::ConstPair<JTB::Str, JTB::Str>::ConstPair(const JTB::ConstPair<JTB::Str, JTB::Str>&)’ first required here
+  119 |       ::new((void*)__p) _Tp(std::forward<_Args>(__args)...);
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

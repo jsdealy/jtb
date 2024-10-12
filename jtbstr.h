@@ -148,6 +148,10 @@ public:
     /* Returns true if c is one of the chars in this string. <- 01/18/24 18:32:26 */ 
     constexpr bool includes(const char c) const;
 
+    /* Read everything from an istream and push it onto the end of the string.
+     * Returns a reference to the updated string. <- 01/18/24 18:32:26 */ 
+    Str& absorb(std::istream& istream);
+
     /* Trims copies of s from the front and back of the string.
      * Defaults to removing spaces and tabs. <- 01/18/24 18:33:40 */ 
     Str trim(std::string = " \t") const;
@@ -246,6 +250,9 @@ public:
      * returned substring or not. <- 02/03/24 22:59:18 */ 
     Str substrInBounds(Str, Str, int = 1, int = -1, Bounds = Bounds::INC) const;
 
+    /* Finds the first occurence of open and the 
+     * first occurence of close. Substr 
+     * is in between. Bounds can be INC or EXC.<- 07/12/24 22:32:44 */ 
     Str substrInBounds(Str, Str, Bounds) const;
 
     /* Returns a slice of the string starting at
@@ -594,7 +601,7 @@ inline Str Str::substrInBounds(Str open, Str close, int n, int m, Bounds bounds)
 }
 
 inline Str Str::substrInBounds(Str open, Str close, Bounds bounds) const {
-    return (*this).substrInBounds(open, close, 1, -1, bounds);
+    return (*this).substrInBounds(open, close, 1, 1, bounds);
 }
 
 constexpr std::size_t Str::findFirstCharFromString(Str s) const {
@@ -781,6 +788,15 @@ inline std::istream& operator>>(std::istream& is, JTB::Str& s) {
 
 constexpr bool Str::includes(const Str s) const {
     return content.find(s.stdstr()) != std::string::npos; 
+}
+
+inline Str& Str::absorb(std::istream& istream) {
+    std::string linebuffer {};
+    while (istream.good()) {
+	std::getline(istream, linebuffer);
+	(*this).push(linebuffer);
+    }
+    return (*this);
 }
 
 constexpr bool Str::includes(const char c) const {
