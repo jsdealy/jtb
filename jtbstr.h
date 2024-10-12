@@ -265,6 +265,8 @@ public:
      * string and returns them (as a string). <- 01/18/24 18:45:22 */ 
     Str pop(std::size_t n = 1); 
 
+    Str& clear();
+
     /* Pushing s onto the back of the string. <- 01/18/24 18:42:17 */ 
     Str& push(Str s) { content.append(s.stdstr()); return *this; }
 
@@ -456,6 +458,11 @@ inline Str Str::pop(std::size_t n) {
     return ret; 
 }
 
+inline Str& Str::clear() {
+    content.clear();
+    return (*this);
+}
+
 inline Str Str::frontPop(std::size_t n) {
     auto contentsize = content.size();
     if (n > contentsize) { 
@@ -589,6 +596,8 @@ constexpr std::size_t Str::rfindNth(Str s, std::size_t n, int pos) const {
 inline Str Str::substrInBounds(Str open, Str close, int n, int m, Bounds bounds) const {
     auto openpos = (*this).findNth(open, n);
     if (openpos == Str::NPOS) return "";
+    std::size_t openSize {open.size()};
+    openpos = openpos + openSize - 1;
     auto closepos = 0;
     if (m > 0) { closepos = (*this).findNth(close, m, openpos+1); }
     else { closepos = (*this).rfindNth(close, m * -1); }
