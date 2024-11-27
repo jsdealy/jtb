@@ -140,7 +140,7 @@ public:
     Str repeat(int n) { Str s = *this; Str k = s; for (int i = 0; i < n-1; ++i) k += s; return k;}
 
     /* Returns true if s is a substring of this string. <- 01/18/24 18:32:14 */ 
-    constexpr bool includes(const Str s) const;
+    bool includes(const Str s) const;
 
     /* True if the string has size 0. <- 06/14/24 23:07:12 */ 
     constexpr bool isEmpty() const { return (*this).size() == 0; }
@@ -152,12 +152,16 @@ public:
      * Returns a reference to the updated string. <- 01/18/24 18:32:26 */ 
     Str& absorb(std::istream& istream);
 
+    /* Read a line from an istream and push it onto the end of the string.
+     * Returns a reference to the updated string. <- 01/18/24 18:32:26 */ 
+    Str& absorbLine(std::istream& istream);
+
     /* Trims copies of s from the front and back of the string.
      * Defaults to removing spaces and tabs. <- 01/18/24 18:33:40 */ 
     Str trim(std::string = " \t") const;
 
     /* Returns true if this string starts with s. <- 01/18/24 18:34:59 */ 
-    constexpr bool startsWith(Str) const;
+    bool startsWith(Str) const;
 
     /* Returns a substring starting at start.
      * Length n is optional. <- 01/20/24 13:44:39 */ 
@@ -171,12 +175,12 @@ public:
 
     /* Returns true of the string ends with substring
      * s. <- 01/20/24 13:45:27 */ 
-    constexpr bool endsWith(Str) const;
+    bool endsWith(Str) const;
 
     /* Returns the location of the first occurrence
      * in the string of one of the 
      * chars in the argument string. <- 01/20/24 18:25:23 */ 
-    constexpr std::size_t findFirstCharFromString(Str) const;
+    std::size_t findFirstCharFromString(Str) const;
 
     enum class SplitMode { CHUNKINC, CHUNKEXC, LISTINC, LISTEXC };
 
@@ -198,7 +202,7 @@ public:
      * results in a Vec containing
      * the chars in the string.
      * <- 01/20/24 18:29:11 */ 
-    constexpr Vec<Str> split(Str = "", SplitMode = SplitMode::LISTEXC) const;
+    Vec<Str> split(Str = "", SplitMode = SplitMode::LISTEXC) const;
 
     /* Returns the start index of the 
      * first occurrence of s within the 
@@ -209,13 +213,13 @@ public:
      * If s does not occur in the substr
      * determined by pos,
      * then return is Str::NPOS. <- 02/03/24 22:02:09 */ 
-    constexpr std::size_t find(const Str, int = 0) const;
+    std::size_t find(const Str, int = 0) const;
 
     constexpr std::size_t find(const char, int = 0) const;
 
     /* Returns true iff s is found 
      * as a substring. Optional starting index. <- 04/06/24 19:19:51 */ 
-    constexpr bool boolFind(const Str, int = 0) const;
+    bool boolFind(const Str, int = 0) const;
     /* Returns true iff c is found. Optional starting index. <- 04/06/24 19:19:51 */ 
     constexpr bool boolFind(const char, int = 0) const;
 
@@ -224,22 +228,22 @@ public:
      * supplied char. Offset is optional. <- 03/23/24 23:20:32 */ 
     Str sliceAtChar(const char, int = 0) const;
 
-    constexpr std::size_t count(Str, int = 0) const;
+    std::size_t count(Str, int = 0) const;
 
-    constexpr std::size_t rfind(Str, int = -1 ) const;
+    std::size_t rfind(Str, int = -1 ) const;
 
     /* Finds the nth occurrence of s starting
      * at pos. n should be 1 if looking for 
      * the first occurrence. Setting n to 0 
      * guarantees a failure (NPOS). <- 02/03/24 23:01:04 */ 
-    constexpr std::size_t findNth(Str, std::size_t = 0, std::size_t = 0) const;
+    std::size_t findNth(Str, std::size_t = 0, std::size_t = 0) const;
 
-    constexpr std::size_t rfindNth(Str, std::size_t = 0, int = -1) const;
+    std::size_t rfindNth(Str, std::size_t = 0, int = -1) const;
 
     /* Returns the appropriate index of 
      * close, skipping nested pairs. Search
      * starts at start. <- 02/04/24 20:18:15 */ 
-    constexpr std::size_t findPairCloser(const Str, const Str, const std::size_t = 0) const;
+    std::size_t findPairCloser(const Str, const Str, const std::size_t = 0) const;
 
     /* Finds the nth occurence of open
      * then finds the mth occurrence of close
@@ -372,7 +376,7 @@ public:
 };
 
 
-constexpr std::size_t Str::findPairCloser(const Str open, const Str close, std::size_t start) const {
+inline std::size_t Str::findPairCloser(const Str open, const Str close, std::size_t start) const {
     std::size_t nestCount = 0;
     auto i = start;
     while (nestCount > 0 || content.at(i) != close) {
@@ -491,15 +495,15 @@ inline Str& Str::frontPush(Str s) {
     return (*this);
 }
 
-constexpr bool Str::boolFind(const Str s, int pos) const {
+inline bool Str::boolFind(const Str s, int pos) const {
     return (*this).find(s,pos) != NPOS;
 }
 
-constexpr bool Str::boolFind(const char s, int pos) const {
+inline constexpr bool Str::boolFind(const char s, int pos) const {
     return (*this).find(s,pos) != NPOS;
 }
 
-constexpr std::size_t Str::find(const Str s, int pos) const {
+inline std::size_t Str::find(const Str s, int pos) const {
     auto size = content.size();
     if (pos >= 0 && pos >= size) return Str::NPOS;
     if (pos < 0 && (pos * -1) > size) return Str::NPOS;
@@ -517,7 +521,7 @@ constexpr std::size_t Str::find(const Str s, int pos) const {
     return Str::NPOS;
 }
 
-constexpr std::size_t Str::find(const char c, int pos) const {
+inline constexpr std::size_t Str::find(const char c, int pos) const {
     if (content.empty()) return Str::NPOS;
     auto size = content.size();
     if (pos >= 0 && pos >= size) return Str::NPOS;
@@ -532,7 +536,7 @@ inline Str Str::sliceAtChar(const char c, int offset) const {
     return (*this).slice(0,(*this).find(c)+offset);
 }
 
-constexpr std::size_t Str::count(const Str s, int pos) const {
+inline std::size_t Str::count(const Str s, int pos) const {
     auto size = content.size();
     if (pos >= 0 && pos >= size) return 0;
     if (pos < 0 && (pos * -1) > size) return 0;
@@ -554,7 +558,7 @@ constexpr std::size_t Str::count(const Str s, int pos) const {
     return count;
 }
 
-constexpr std::size_t Str::rfind(Str s, int pos) const {
+inline std::size_t Str::rfind(Str s, int pos) const {
     auto size = content.size();
     auto searchsize = s.size();
     for (int i = pos < 0 ? size + pos : pos; i >= 0 && i >= searchsize - 1; i--) {
@@ -569,7 +573,7 @@ constexpr std::size_t Str::rfind(Str s, int pos) const {
     return Str::NPOS;
 }
 
-constexpr std::size_t Str::findNth(Str s, std::size_t n, std::size_t pos) const {
+inline std::size_t Str::findNth(Str s, std::size_t n, std::size_t pos) const {
     if (n <= 0) return Str::NPOS;
     std::size_t count = 0;
     std::size_t ret = 0;
@@ -581,7 +585,7 @@ constexpr std::size_t Str::findNth(Str s, std::size_t n, std::size_t pos) const 
     return ret;
 }
 
-constexpr std::size_t Str::rfindNth(Str s, std::size_t n, int pos) const {
+inline std::size_t Str::rfindNth(Str s, std::size_t n, int pos) const {
     if (n <= 0) return Str::NPOS;
     std::size_t count = 0;
     std::size_t ret = 0;
@@ -613,7 +617,7 @@ inline Str Str::substrInBounds(Str open, Str close, Bounds bounds) const {
     return (*this).substrInBounds(open, close, 1, 1, bounds);
 }
 
-constexpr std::size_t Str::findFirstCharFromString(Str s) const {
+inline std::size_t Str::findFirstCharFromString(Str s) const {
     auto size = s.size();
     if (size <= 0) return Str::NPOS;
     std::size_t min = content.find(s.at(0));
@@ -639,7 +643,7 @@ inline Str::__ExtractedSplitMode getMode(Str::SplitMode m) {
     else return Str::__ExtractedSplitMode::CHUNK;
 }
 
-constexpr Vec<Str> Str::split(Str separator, Str::SplitMode mode) const {
+inline Vec<Str> Str::split(Str separator, Str::SplitMode mode) const {
     Vec<Str> ret;
     auto contentsize = content.size();
     if (contentsize == 0) return ret;
@@ -745,13 +749,13 @@ inline Str Str::substr(std::size_t start, long n) const {
     }
 }
 
-constexpr bool Str::endsWith(Str s) const {
+inline bool Str::endsWith(Str s) const {
     if (s.size() > content.size()) return false;
     if (content.substr(content.size()-s.size()) == s.stdstr()) return true;
     return false;
 }
 
-constexpr bool Str::startsWith(Str s) const {
+inline bool Str::startsWith(Str s) const {
     if (content.substr(0, s.size()) == s.stdstr()) {
 	return true;
     } 
@@ -795,7 +799,7 @@ inline std::istream& operator>>(std::istream& is, JTB::Str& s) {
     is >> s.content; return is;
 }
 
-constexpr bool Str::includes(const Str s) const {
+inline bool Str::includes(const Str s) const {
     return content.find(s.stdstr()) != std::string::npos; 
 }
 
@@ -808,7 +812,14 @@ inline Str& Str::absorb(std::istream& istream) {
     return (*this);
 }
 
-constexpr bool Str::includes(const char c) const {
+inline Str& Str::absorbLine(std::istream& istream) {
+    std::string linebuffer {};
+    std::getline(istream, linebuffer);
+    (*this).push(linebuffer);
+    return (*this);
+}
+
+inline constexpr bool Str::includes(const char c) const {
     return content.find(c) != std::string::npos; 
 }
 
