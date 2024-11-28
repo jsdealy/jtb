@@ -95,10 +95,12 @@ public:
     Str& operator+=(const Str& s) { content += s.stdstr(); return *this; }
     Str operator+(Str& s) const { return (*this).concat(s); }
     Str operator+(const char* s) const { return (*this).concat(s); }
+    Str operator+(const char s) const { return (*this).concat(s); }
 
     /* left-side concatenation <- 06/14/24 11:10:44 */ 
     friend Str operator+(const char*, const Str&); 
     friend Str operator+(const std::string&, const Str&); 
+    friend Str operator+(const char, const Str&); 
 
     /* Exposes the inner std::string. <- 01/12/24 20:17:11 */ 
     constexpr const std::string& stdstr() const { return content; }
@@ -288,8 +290,13 @@ public:
 
     /* Returns a copy of the string 
      * concatenated with s. <- 01/20/24 22:54:49 */ 
-    Str concat(Str s) const { auto str = content; str.append(s.stdstr()); return str; }
-    Str concat(const char* s) const { auto str = content; str.append(s); return str; }
+    Str concat(Str s) const { return content + s.stdstr(); }
+    /* Returns a copy of the string 
+     * concatenated with s. <- 01/20/24 22:54:49 */ 
+    Str concat(const char* s) const { return content + s; }
+    /* Returns a copy of the string 
+     * concatenated with c. <- 01/20/24 22:54:49 */ 
+    Str concat(const char c) const { return content + c; }
 
     /* Pushing s onto the front of the string. <- 01/20/24 19:42:15 */ 
     Str& frontPush(Str);
@@ -771,6 +778,10 @@ inline Str operator+(const char* c_str, const Str& s) {
 
 inline Str operator+(const std::string& stdstr, const Str& s) {
     return Str(stdstr).concat(s);
+} 
+
+inline Str operator+(const char c, const Str& s) {
+    return Str(c).concat(s);
 } 
 
 inline std::ostream& operator<<(std::ostream& os, const JTB::Str& s) {
