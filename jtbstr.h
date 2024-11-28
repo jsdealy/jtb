@@ -129,9 +129,9 @@ public:
     auto operator<=>(const Str& s2) const { return (*this).stdstr() <=> s2.stdstr(); }
     auto operator<=>(const std::string& s2) const { return (*this).stdstr() <=> s2; }
     auto operator<=>(const char* s2) const { return (*this).c_str() <=> s2; }
-    /* bool operator==(const Str& s2) const { return content == s2.stdstr(); } */
-    /* constexpr bool operator==(const std::string& s2) const { return content == s2; } */
-    /* constexpr bool operator==(const char* s2) const { return content == s2; } */
+    bool operator==(const Str& s2) const { return content == s2.stdstr(); }
+    constexpr bool operator==(const std::string& s2) const { return content == s2; }
+    constexpr bool operator==(const char* s2) const { return content == s2; }
 
     enum { NPOS = std::string::npos };
 
