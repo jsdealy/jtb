@@ -3,6 +3,7 @@
 #include <ncurses.h>
 #include <string>
 
+namespace JTB {
 
 class Display {
     int numberOfPersistentLines;
@@ -62,3 +63,5 @@ public:
 	numberOfDisplayMessages = 0;
     }
 };
+
+}
