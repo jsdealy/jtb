@@ -69,6 +69,7 @@ public:
     Vec(const std::vector<T>& x): content(x) {};
     Vec(const std::vector<T>&& x): content(x) {};
     Vec(std::initializer_list<T> list): content(list) {}
+    Vec(std::size_t n): content(n) {}
     Vec(T&& x) { std::vector<T> s; s.push_back(std::move(x)); content = s; }
     Vec() = default;
 
@@ -91,10 +92,17 @@ public:
     /* Pushes a copy of x onto the back of the Vec<T> <= 01/18/24 18:15:08 */ 
     Vec& push(const T& x) { content.push_back(x); return *this; }
 
-    /* Pushes a copy of x onto the back of the Vec<T>. 
+    /* Constructs a new T on the back of the Vec<T>. 
      * Returns the Vec<T>.
      * <= 01/18/24 18:15:21 */ 
-    Vec& push(const T&& x) { content.push_back(x); return *this; }
+    template <typename Z>
+    Vec& push(const Z&& x) { content.emplace_back(x); return *this; }
+
+    /* Constructs a new T on the back of the Vec<T>. 
+     * Returns the Vec<T>.
+     * <= 01/18/24 18:15:21 */ 
+    template <typename Z>
+    Vec& push(Z&& x) { content.emplace_back(x); return *this; }
 
     /* Pops the element at the back of the Vec<T> and returns it. <= 01/18/24 18:15:44 */ 
     T pop() { if (content.size() <= 0) throw std::out_of_range("Called pop on empty Vec."); T x { content.back() }; content.pop_back(); return x; }
@@ -311,6 +319,17 @@ public:
 	for (auto& elem : content) {
 	    callback(elem);
 	}
+    }
+
+    void forEach(std::function<void(T&)> callback) {
+	for (auto& elem : content) {
+	    callback(elem);
+	}
+    }
+
+    Vec<T>& clear() {
+	content.clear();
+	return (*this);
     }
 
 

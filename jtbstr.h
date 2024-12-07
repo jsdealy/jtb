@@ -101,6 +101,7 @@ public:
     friend Str operator+(const char*, const Str&); 
     friend Str operator+(const std::string&, const Str&); 
     friend Str operator+(const char, const Str&); 
+    friend Str operator+(const Str&, const Str&); 
 
     /* Exposes the inner std::string. <- 01/12/24 20:17:11 */ 
     constexpr const std::string& stdstr() const { return content; }
@@ -171,6 +172,9 @@ public:
     /* Returns a substring starting at start.
      * Length n is optional. <- 01/20/24 13:44:39 */ 
     Str substr(std::size_t, long = NPOS) const;
+
+    /* Returns a copy of the string with s on either side. */ 
+    Str wrap(Str) const;
 
     /* Returns an all-lowercase version of the string. */ 
     Str lower() const;
@@ -727,6 +731,10 @@ inline Vec<Str> Str::split(Str separator, Str::SplitMode mode) const {
     return ret;
 }
 
+inline Str Str::wrap(Str s) const {
+    return s + (*this) + s;
+}
+
 inline Str Str::lower() const {
     std::string ret; 
     for (auto c : content) {
@@ -771,6 +779,10 @@ inline bool Str::startsWith(Str s) const {
     } 
     return false;
 }
+
+inline Str operator+(const Str& ls, const Str& s) {
+    return ls.concat(s);
+} 
 
 inline Str operator+(const char* c_str, const Str& s) {
     return Str(c_str).concat(s);
