@@ -857,4 +857,25 @@ inline Str Str::trim(std::string stuffToTrim) const {
     return content.substr(front, back - front);
 }
 
+inline float string_similarity(Str& s1, Str& s2) {
+    if (s1.size() < 1 || s2.size() < 1) throw std::runtime_error("Passed empty string to string_similarity");
+    int score1 {0};
+    int score2 {0};
+    auto iter2 {s2.const_begin()};
+    auto iter1 {s1.const_begin()};
+    s1.forEach([&](const char c) {
+	if (c == *iter2) {
+	    ++score1;
+	    ++iter2;
+	}
+    });
+    s2.forEach([&](const char c) {
+	if (c == *iter1) {
+	    ++score2;
+	    ++iter1;
+	}
+    });
+    return ((static_cast<float>(score1)/static_cast<float>(s1.size())) + (static_cast<float>(score2)/static_cast<float>(s2.size()))) / 2;
+}
+
 }

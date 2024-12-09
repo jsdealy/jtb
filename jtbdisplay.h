@@ -35,13 +35,13 @@ public:
     }
 
     void flashMessage(const char* s, int milliseconds = 250) {
-	printw("%s", s);
-	refresh();
-	/* sleep for milliseconds <= 01/13/24 13:27:21 */ 
-	napms(milliseconds);
-	/* clearing the flash messages <== 12/07/24 14:32:19 */ 
 	move(numberOfPersistentLines + numberOfDisplayMessages,0);
-	clrtobot();
+	refresh();
+	printw("%s", s);
+	/* sleep for milliseconds <= 01/13/24 13:27:21 */ 
+	/* napms(milliseconds); */
+	/* clearing the flash messages <== 12/07/24 14:32:19 */ 
+	/* clrtobot(); */
 	refresh();
     }
 
