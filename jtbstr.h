@@ -857,7 +857,7 @@ inline Str Str::trim(std::string stuffToTrim) const {
     return content.substr(front, back - front);
 }
 
-inline float string_similarity(Str& s1, Str& s2) {
+inline float string_similarity(const Str& s1, const Str& s2) {
     if (s1.size() < 1 || s2.size() < 1) throw std::runtime_error("Passed empty string to string_similarity");
     int score1 {0};
     int score2 {0};
